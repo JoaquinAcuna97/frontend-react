@@ -1,0 +1,13 @@
+1-En el index.html cambiar los class por className, y los for por htmlFor
+2-Crear un proyecto react, crear una carpeta components
+3-Identificar componentes en el html, dentro de components crear componentes desde el mas interior
+4-Se puede empezar creando Tarjeta.jsx, dentro escribir rfce y copiar el contenido del html (incluyendo el div) y borrar del html lasdos tarjetas
+5-Crear Tarjetas.jsx,dentro escribir rfce, y hacer un import de tarjeta, teniendo abierto tarjeta para que nos ayude en la importacion, y dentro del <div class="tarjetas"> agregar los componente Tarjeta
+6-Crear Agregar.jsx, dentro escribir rfce, cortar el contenido del html y pegarlo en el return
+7-Crear Contenido.jsx, dentro escribir rfce, y dentro del <div class="contenido"> agregar los componente Agregar y Tarjetas 
+8-Crear Menu.jsx, dentro escribir rfce, cortar menu (incluyendo el div) del html y pegarlo en el return
+9-En app.jsx agregar menu y contenido dentro del return
+10-En src crear una carpeta estilos y dentro pegar estilos.css
+11-En App.js agregar import './estilos/estilos.css' (es estilo de vite centra el contenido)
+
+ 

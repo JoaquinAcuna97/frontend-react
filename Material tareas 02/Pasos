@@ -1,0 +1,52 @@
+1-En contenido agregar la lista:  const tareasIniciales = [{ id: 1, nombre: "Tarea 1", completado: false }
+{ id: 2, nombre: "Tarea 2", completado: true }{ id: 3, nombre: "Tarea 3", completado: false }];
+2-En contenido agregar import { useState } from "react"; y const [tareas, setTareas] = useState(tareasIniciales);
+3-En contenido pasar las tareas a tarjetas <Tarjetas tareas={tareas} />
+4-En tarjetas, recibir las tareas desestructurando las props ({tareas})
+5-En tarjetas {tareas.map(tarea => <Tarjeta id={tarea.id} nombre={tarea.nombre} completado={tarea.completado} />)} 
+6-Ver en la consola que da error por las key, modificar a  {tareas.map(tarea => <Tarjeta key={tarea.id} id={tarea.id} nombre={tarea.nombre} completado={tarea.completado} />)}, key no es un parametro que se pase a Tarea sino un identificador para react
+7-En tarjeta desestructurar los datos pasados  ({id,nombre,completado})
+8-En tarjeta dentro de label modificar por {nombre}
+9-En la pagina apretar en los distintos label y ver como siempre se modifica el de la tarea 1 ( esto es porque tienen todos el mismo id)
+10-Ver en la consola que todos los id y for son el mismo para todas las tareas
+11-En tarjeta cambiar id y htmlFor por {`list_${id}`}
+12-En la pagina apretar en los distintos label y ver que se soluciono el problema del paso 9
+13-En Tarjeta sacar id y htmlfor y dejar el input dentro de label, esto es debido a que los id no deberian repetirse pero podria pasar ya que son componente que podrian estar en varios lados, en este caso de cambio se aplica otro css ver en estilos (has que aplica estilo al padre)
+14-Ir a consola a la parte de componentes ( plugin react dev tools si aun no esta instalado) y ver que no cambian los valores al cambiar los check, esto es porque se cambia el elemento check pero la tarea en si ese check no lo afecta (si no anda componentes apretar F5)
+15-En consola ver que muestra cada componente, props valores etc
+16-En tarjeta agregar al input el atributo checked={completado} ahora si se ve que la tarea 2 se marca como completada 
+17-En tarjetas borrar id nombre y completado y sustituirlos por {...tarea} la desestructuracion de la tarea es lo mismo que pasar cada parametro
+18-En la pagina ver que sigue andando similar al cambio por la desestructura
+19-En la pagina tratar de cambiar los valores de los check y no se podra, ya que el valor se fija por el parametro
+20-Ir a la consola notar que hay un mensaje que indica que falta un onChange sino el check es de solo lectura
+21-En Tarjeta al input agregarle un onChange={handleChange} y crear un metodo const handleChange = () => {} por ahora no hace nada; 
+22-Recargar la pagina e ir a consola y notar que el mensaje no esta pero aun no podemos cambiar los check
+23-Vamos a hacer que el onChange cambie el valor del check de las tareas, para esto se crea un metodo en contenido que cambie el valor de check
+24-En contenido crear la funcion const cambiarCheck = (idTarea, completado)
+La funcion copia las tareas, busca la que se debe modificar, mediante un find por id, a la tarea se setea el valor recibido como completado, y se hace un setTareas con las tareas copiadas.
+25-En contenido se pasa la funcion cambiar check, a tarjetas mediante parametro <Tarjetas cambiarCheck={cambiarCheck} tareas={tareas} />
+26-En tarjetas se desestructura la funcion Tarjetas = ({ tareas,cambiarCheck })
+27- se pasa cambiarCkeck a Tarjeta por parametro  <Tarjeta key={tarea.id} {...tarea} cambiarCheck={cambiarCheck} />
+28-En tarjeta se desestructura cambiarcheck Tarjeta = ({ id, nombre, completado, cambiarCheck })
+29-En tarjeta completar el metodo const handleChange = (e) => {cambiarCheck(id, e.target.checked);} que termina llamando el metodo de contenido al que le pasa el id que tarjeta recibe por parametro y se lo pasa al metodo ademas con e.target.checked se recupera el valor del input check
+30-En consola ir a componentes y ver como ahora si al cambiar los check se modifican los valores de las tareas
+31-Se dara la funcionalidad de agregar tarea para esto en contenido se creara una funcion para agregar una tarea y se la usara desde agregar
+32-En contenido se crea la funcion agregarTarea la cual recibe nombre de la tarea, suponiendo que no se borran las tareas, el id de la nueva tarea sera el largo de tareas + 1, completado sera false para la nueva tarea y el nombre sera el recibido por parametro, se hace un desestructurin de tarea se agregar la nueva tarea y se hace un setTareas
+33-En contenido se pasa por parametro la funcion a <Agregar agregarTarea={agregarTarea} />
+34-En agregar se hace un destructing de agregartarea Agregar = ({ agregarTarea })
+35-En agregar hacer import { useRef } from 'react', const nombreRef = useRef(), y al input de nombre agregar ref={nombreRef}
+36-En agregar crear el metodo handleAgregar que recupere el nombre mediante nombreRef.current.value y llame a gregarTarea con ese nomnre
+37-En agregar, al boton de agregar incluir onClick={handleAgregar}
+38-Ir a la pantalla y agregar una tarea, notar que se agrega la nueva tarea
+39-Notar que se hizo un pasamanos con cambiarcheck que paso de contenido a tarjetas y luego a tarjeta. Mientras que se hizo algo similar con agrear tarea, mas adelante se vera Redux para no tener que hacer el pasamanos y tener un lugar centralizado donde cambiar un estado global compartido
+
+
+
+
+
+
+
+
+
+
+
